@@ -4,8 +4,6 @@ import Todo from "../Todo";
 import { getTodos } from "../../../api/todos";
 import { useQuery } from "react-query";
 import { QUERY_KEYS } from "../../../query/keys.constant";
-import { useDispatch } from "react-redux";
-import { getTodo } from "../../modules/todosSlice";
 
 /**
  * 컴포넌트 개요 : 메인 > TODOLIST. 할 일의 목록을 가지고 있는 컴포넌트
@@ -14,7 +12,6 @@ import { getTodo } from "../../modules/todosSlice";
  * @returns TodoList 컴포넌트
  */
 function TodoList({ isActive }) {
-  const dispatch = useDispatch();
   const { isLoading, isError, data } = useQuery(QUERY_KEYS.TODOS, getTodos);
 
   if (isLoading) {
@@ -24,8 +21,6 @@ function TodoList({ isActive }) {
   if (isError) {
     return <p>오류가 발생하였습니다...!</p>;
   }
-
-  dispatch(getTodo(data));
 
   return (
     <StyledDiv>
