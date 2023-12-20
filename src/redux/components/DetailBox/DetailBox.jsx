@@ -18,6 +18,8 @@ function DetailBox() {
 
   // 이 컴포넌트에서 아이템을 사용하기 위해, params로 전달받은 id를 이용-todo를 filtering
   const filteredTodos = useSelector((state) => {
+    // console.log("state -----", state.todos);
+    // console.log("params.id -----", params.id);
     return state.todos.filter((item) => item.id === params.id);
   });
 
@@ -56,7 +58,7 @@ function DetailBox() {
         </tr>
         <tr>
           <StyledTh>CONTENTS</StyledTh>
-          <StyledTh></StyledTh>
+          <StyledTh>{todo?.contents}</StyledTh>
         </tr>
         <tr>
           <StyledTh>완료여부</StyledTh>

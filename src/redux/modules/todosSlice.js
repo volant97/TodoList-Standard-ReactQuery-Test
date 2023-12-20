@@ -3,8 +3,13 @@ import { createSlice } from "@reduxjs/toolkit";
 const todosSlice = createSlice({
   name: "todos",
   initialState: {},
-  reducers: {},
+  reducers: {
+    getTodo: (state, action) => {
+      const todos = action.payload;
+      return [...todos];
+    },
+  },
 });
 
-// export
+export const { getTodo } = todosSlice.actions;
 export default todosSlice.reducer;
